@@ -13,6 +13,10 @@ class Element(object):
 class LinkedList(object):
     def __init__(self, head=None):
         self.head = head
+        if head != None:
+            self.size = 1
+        else:
+            self.size = 0
 
     def append(self, new_element):
         current = self.head
@@ -22,10 +26,12 @@ class LinkedList(object):
             current.next = new_element
         else:
             self.head = new_element
+        self.size += 1
 
     def insert_first(self, new_element):
         new_element.next = self.head
         self.head = new_element
+        self.size += 1
 
     def delete_first(self):
         if self.head:
