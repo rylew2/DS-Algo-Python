@@ -4,7 +4,7 @@ you'd like! Try to write each one in as
 few lines as possible.
 Make sure you pass the test cases too!"""
 
-from collections import deque
+# from collections import deque #alternative to a list, just use a deque
 
 class Queue:
     def __init__(self, head=None):
