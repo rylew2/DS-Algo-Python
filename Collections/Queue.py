@@ -26,7 +26,6 @@ class Queue:
         return self.storage.pop(0)
         self.size -= 1
 
-
 # Setup
 q = Queue(1)
 q.enqueue(2)
