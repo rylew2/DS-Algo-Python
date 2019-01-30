@@ -9,15 +9,22 @@
 #     step: Difference between each number in the sequence.
 
 def bubbleSort(alist):
-    for passnum in range(len(alist)-1,0,-1):
+    alreadySorted = False
+    for passnum in range(len(alist)-1,0,-1): # range of list length to 1 . Inspect 1 less element each iteration
         for i in range(passnum):
             if alist[i]>alist[i+1]:
-                temp = alist[i]
-                alist[i] = alist[i+1]
-                alist[i+1] = temp
+                alreadySorted = True
+                alist[i], alist[i+1] = swap(alist[i], alist[i+1])
+
+            if not alreadySorted:
+                return alist
 
 
-
+def swap(a,b):
+    temp = a
+    a = b
+    b = temp
+    return a, b
 
 alist = [54,26,93,17,77,31,44,55,20]
 bubbleSort(alist)
@@ -28,6 +35,8 @@ alist = [8,3,1,7,0]
 bubbleSort(alist)
 print(alist)
 
+alist = [1,2,3,4]
+bubbleSort(alist)
+print(alist)
 
-for x in range(len(alist)-1,0,-1):
-    print(x)
+

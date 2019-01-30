@@ -22,9 +22,9 @@ def get_fib(position):
         return fibonacci_cache[position]
 
     #compute the Nth term
-    if position == 0 or position == 1:
+    if position == 0 or position == 1:  # fib(0) =0   fib(1) = 1
         return position
-    value =  get_fib(position - 1) + get_fib(position - 2)
+    value =  get_fib(position - 1) + get_fib(position - 2)   # fib(n) = fib(n-1) + fib(n-2)
     fibonacci_cache[position] = value
     return value
 
