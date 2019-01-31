@@ -8,9 +8,9 @@ def mergeSort(alist):
         mergeSort(lefthalf)
         mergeSort(righthalf)
 
-        i=0
-        j=0
-        k=0
+        i=0 # i ==> lefthalf index marker
+        j=0 # j ==> righthalf index marker
+        k=0 # k ==> alist index marker (increment on every alist update)
         while i < len(lefthalf) and j < len(righthalf):
             if lefthalf[i] < righthalf[j]:
                 alist[k]=lefthalf[i]
