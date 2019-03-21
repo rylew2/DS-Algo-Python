@@ -54,9 +54,6 @@ class BST(object):
             current = current.left
             self.insertRecursive(new_val, current)
 
-
-
-
     def search(self, find_val):
         current = self.root
         while 1:
@@ -85,11 +82,6 @@ tree = BST(4)
 # tree.insert(3)
 # tree.insert(5)
 
-
-tree.insertRecursive(2)
-tree.insertRecursive(1)
-tree.insertRecursive(3)
-tree.insertRecursive(5)
 
 tree.insertRecursive(4)
 tree.insertRecursive(2)
