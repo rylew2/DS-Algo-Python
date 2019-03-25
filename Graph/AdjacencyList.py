@@ -27,11 +27,9 @@ class Graph:
         return v in self.graph[u]
 
 
-
     def printGraph(self):
         for v in self.graph:
             print('{} : {}'.format(v, self.graph[v]))
-
 
 
 g = Graph()  # space => O(V+E)
@@ -41,6 +39,15 @@ g.addEdge(1, 2)
 g.addEdge(2, 0)
 g.addEdge(2, 3)
 g.addEdge(3, 3)
+
+g.addVertex(4)
+g.addEdge(4,1)
+
+g.removeVertex(1)
+
+if g.queryEdge(0, 2) == True:
+    print('0 points to 2', end='\n\n')
+
 g.printGraph()
 
 
