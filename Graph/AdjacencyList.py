@@ -26,13 +26,15 @@ class Graph:
     def queryEdge(self, u, v ):
         return v in self.graph[u]
 
+
+
     def printGraph(self):
         for v in self.graph:
             print('{} : {}'.format(v, self.graph[v]))
 
 
 
-g = Graph()
+g = Graph()  # space => O(V+E)
 g.addEdge(0, 1)
 g.addEdge(0, 2)
 g.addEdge(1, 2)
