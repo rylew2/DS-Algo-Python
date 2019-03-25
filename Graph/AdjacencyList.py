@@ -6,6 +6,7 @@ class Graph:
 
     # O(1)
     def addEdge(self, u, v):
+
         self.graph[u].add(v)
 
     # O(1)
@@ -39,9 +40,11 @@ g.addEdge(1, 2)
 g.addEdge(2, 0)
 g.addEdge(2, 3)
 g.addEdge(3, 3)
+g.removeEdge(2,3)
 
 g.addVertex(4)
 g.addEdge(4,1)
+g.addEdge(1,4)
 
 g.removeVertex(1)
 

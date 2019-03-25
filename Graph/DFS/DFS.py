@@ -4,8 +4,8 @@
 from collections import defaultdict  # if a key that is not in the dict is attempt
 
 
-# This class represents a directed graph using
-# adjacency list representation
+# This class represents a directed graph
+# adjacency list representation - a dictionary of sets
 class Graph:
 
     # Constructor
@@ -20,7 +20,6 @@ class Graph:
     def addEdge(self, u, v):
         self.graph[u].add(v)
 
-        # A function used by DFS
 
     def DFSUtil(self, v, visited):
 
