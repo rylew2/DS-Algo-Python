@@ -1,5 +1,6 @@
 from collections import defaultdict
 
+
 class Graph:
     def __init__(self):
         self.graph = defaultdict(set)
@@ -40,16 +41,17 @@ g.addEdge(1, 2)
 g.addEdge(2, 0)
 g.addEdge(2, 3)
 g.addEdge(3, 3)
+
 g.removeEdge(2,3)
 
 g.addVertex(4)
 g.addEdge(4,1)
 g.addEdge(1,4)
 
-g.removeVertex(1)
+g.removeVertex(4)
 
 if g.queryEdge(0, 2) == True:
-    print('0 points to 2', end='\n\n')
+    print('0 --> 2 exists', end='\n\n')
 
 g.printGraph()
 
