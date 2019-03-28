@@ -1,10 +1,7 @@
 # https://www.geeksforgeeks.org/depth-first-search-or-dfs-for-a-graph/
-# Python program to print DFS traversal from a
-# given given graph
-from collections import defaultdict  # if a key that is not in the dict is attempt
 
-# This class represents a directed graph
-# adjacency list representation - a dictionary of sets
+from collections import defaultdict
+
 class Graph:
 
     # Constructor
@@ -25,7 +22,7 @@ class Graph:
 
         self.visited.add(v)
 
-        print( v,)
+        print( v, end=' ')
 
         for i in self.graph[v]:   # Recur for all the vertices adjacent to this vertex
             if i not in self.visited:
@@ -38,11 +35,11 @@ class Graph:
             vertex = stack.pop()
             if vertex not in self.visited:
                 self.visited.add(vertex)
-                print(vertex)
+                print(vertex, end=' ')
                 stack.extend(self.graph[vertex] - self.visited) # add unvisited neighbors (set subtraction)
         return self.visited
 
-# Create a graph given in the above diagram
+
 g = Graph()
 g.addEdge(0, 1)
 g.addEdge(0, 2)
@@ -51,7 +48,19 @@ g.addEdge(2, 0)
 g.addEdge(2, 3)
 g.addEdge(3, 3)
 
-print("Following is DFS from (starting from vertex 2)")
-# g.dfsRecursive(2)
-print(g.dfsIterative(2))
-# This code is contributed by Neelam Yadav
+print('Recursive: ', end=' ')
+g.dfsRecursive(2)
+
+print()
+print('============================')
+
+
+g2 = Graph()
+g2.addEdge(0, 1)
+g2.addEdge(0, 2)
+g2.addEdge(1, 2)
+g2.addEdge(2, 0)
+g2.addEdge(2, 3)
+g2.addEdge(3, 3)
+print('Iterative: ', end=' ')
+g2.dfsIterative(2)
