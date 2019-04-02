@@ -1,55 +1,37 @@
 from collections import defaultdict, deque
 
-
 class Graph:
-
     def __init__(self):
-        self.graph = defaultdict(set) # dictionary of sets
-        self.visited = []
+        self.graph = defaultdict(set)
+        self.visited = set()
         self.q = deque([])
-
 
     def addEdge(self, u, v):
         self.graph[u].add(v)
 
-    # recursive
-    def bfs(self, root):
+    def bfsIterative(self, v):
+        self.q.append(v)
+        while self.q:
+            vertex = self.q.popleft()
+            if vertex not in self.visited:
+                print(vertex)
+                self.visited.add(vertex)
+                self.q.extend(self.graph[vertex] - self.visited)
 
-        self.visited.append(root)
 
-        for neighbor in self.graph[root]:
-            if neighbor not in self.visited:
-                self.q.append(neighbor)
-                self.visited.append(neighbor)
-                print(neighbor)
-                # self.bfs(neighbor)
-
+    def bfsRecursive(self, v):
+        self.visited.add(v)
+        print(v)
+        for i in self.graph[v]:
+            if i not in self.visited:
+                self.visited.add(i)
+                self.q.append(i)
         if self.q:
-            self.bfs(self.q.popleft())
+            self.bfsRecursive(self.q.popleft())
 
 
-        return self.visited
 
 
-    # Inspired by: https://www.geeksforgeeks.org/breadth-first-search-or-bfs-for-a-graph/
-    def bfs2(self, root):
-        print(root)
-        self.visited.append(root)
-        self.q.append(root)
-
-        while self.q: #continue until queue is empty
-            v = self.q.popleft()
-
-            for neighbor in self.graph[v]:
-                if neighbor not in self.visited:
-                    self.q.append(neighbor)
-                    self.visited.append(neighbor)
-                    print(neighbor)
-        return self.visited
-
-    def reset(self): #reset q and visited, but keep edges
-        self.visited = []
-        self.q = deque([])
 
 g = Graph()
 # g.addEdge(0, 1)
@@ -60,19 +42,25 @@ g = Graph()
 # g.addEdge(4,5)
 #
 
-g.addEdge(0,2)
-g.addEdge(2,0)
-g.addEdge(2,3)
-g.addEdge(0,1)
-g.addEdge(3,3)
+g.addEdge(1,2)
+g.addEdge(1,3)
+g.addEdge(2,4)
+g.addEdge(2,5)
+g.addEdge(3,6)
+g.addEdge(4,7)
 
-print(2)
-g.bfs(2)
+g.bfsIterative(1)
+
+print('==================================')
+g2 = Graph()
+
+g2.addEdge(1,2)
+g2.addEdge(1,3)
+g2.addEdge(2,4)
+g2.addEdge(2,5)
+g2.addEdge(3,6)
+g2.addEdge(4,7)
 
 
-print()
-
-g.reset()
-g.bfs2(2)
-
+g2.bfsRecursive(1)
 
