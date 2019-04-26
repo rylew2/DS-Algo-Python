@@ -17,15 +17,17 @@ class Graph:
         for i in self.graph[v]:
             if i not in self.visited:
                 self.dfsRecursive(i)
-            
+
+
     def dfsIterative(self, v):
         stack = [v]
         while stack:
             vertex = stack.pop()
             if vertex not in self.visited:
-                print(vertex)
                 self.visited.add(vertex)
+                print(vertex)
                 stack.extend(self.graph[vertex] - self.visited)
+
 
     def bfsIterative(self, v):
         self.q.append(v)
@@ -35,7 +37,6 @@ class Graph:
                 print(vertex)
                 self.visited.add(vertex)
                 self.q.extend(self.graph[vertex] - self.visited)
-
 
 g = Graph()
 g.addEdge(1,2)

@@ -1,36 +1,62 @@
-"""You're going to write a binary search function.
-You should use an iterative approach - meaning
-using loops.
-Your function should take two inputs:
-a Python list to search through, and the value
-you're searching for.
-Assume the list only has distinct elements,
-meaning there are no repeated values, and
-elements are in a strictly increasing order.
-Return the index of value, or -1 if the value
-doesn't exist in the list."""
+#https://www.geeksforgeeks.org/binary-search/
 
 
 
-#input_array - Python list to search through
-#value - the value you're searching for
-def binary_search(input_array, value):
-    """Your code goes here."""
-    low = 0
-    high = len(input_array) -1
-    while( low <= high):
-        mid = int((low+high)/2)  #int() will round down ==>  int(7/2)=3
-        if value==input_array[mid]:
+def bsIterative(arr, l, r, x):
+
+    while l<=r:
+        mid = l + (r-l)//2
+        if arr[mid]==x:
             return mid
-        elif value > input_array[mid]:
-            low = mid + 1
+        elif x > arr[mid]:
+            l = mid+1
         else:
-            high = mid-1
-
+            r= mid-1
     return -1
 
-test_list = [1,3,9,11,15,19,29]
-test_val1 = 25
-test_val2 = 15
-print(binary_search(test_list, test_val1))
-print(binary_search(test_list, test_val2))
+
+def bsRecursive(arr, l, r, x):
+
+    if l <= r:
+        mid = l + (r-l)//2
+        if arr[mid] == x:
+            return mid
+        elif x > arr[mid]:
+            return bsRecursive(arr, mid+1, r, x)
+        else:
+            return bsRecursive(arr, l, mid-1, x)
+
+    else:
+        return -1
+
+
+
+
+
+
+
+
+
+
+arr = [1,2,3,4,5]
+print(bsIterative( arr, 0 , len(arr)-1, 4) )
+print(bsRecursive( arr, 0 , len(arr)-1, 4) )
+print('-------------------------------')
+print(bsIterative( arr, 0 , len(arr)-1, 10) )
+print(bsRecursive( arr, 0 , len(arr)-1, 10) )
+
+
+
+
+
+
+
+#
+# test_list = [1,3,9,11,15,19,29]
+# test_val1 = 3
+# test_val2 = 15
+# print(binary_search(test_list, test_val1))
+# print(binary_search(test_list, test_val2))
+
+
+
