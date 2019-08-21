@@ -36,8 +36,6 @@ def bsRecursive(arr, l, r, x):
 
 
 
-
-
 arr = [1,2,3,4,5]
 print(bsIterative( arr, 0 , len(arr)-1, 4) )
 print(bsRecursive( arr, 0 , len(arr)-1, 4) )

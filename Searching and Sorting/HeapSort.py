@@ -27,11 +27,12 @@ def heapify(arr, n, i):
     # The main function to sort an array of given size
 
 
+
 def heapSort(arr):
     n = len(arr)
 
     # Build a maxheap.
-    for i in range(n, -1, -1):
+    for i in range(n, -1, -1): # from n to 0
         heapify(arr, n, i)
 
         # One by one extract elements
