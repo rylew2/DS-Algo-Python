@@ -21,9 +21,7 @@ class Graph:
     def dfsRecursive(self, v):
 
         self.visited.add(v)
-
         print( v, end=' ')
-
         for i in self.graph[v]:   # Recur for all the vertices adjacent to this vertex
             if i not in self.visited:
                 self.dfsRecursive(i)
