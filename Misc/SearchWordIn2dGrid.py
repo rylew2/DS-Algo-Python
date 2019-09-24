@@ -1,4 +1,3 @@
-
 def generateDirections(grid, originalRowIdx, originalColIdx, word):
     matches=[]
     numRows, numCols = len(grid), len(grid[0])
@@ -27,13 +26,13 @@ def generateDirections(grid, originalRowIdx, originalColIdx, word):
 
 
 from collections import defaultdict
+import numpy as np
 def crossword(grid, word):
-    dirWords = []
-    for rowIdx, row in enumerate(grid):
-        for colIdx, char in enumerate(row):
-            if char == word[0]:
-                dirWords = generateDirections(grid, rowIdx, colIdx, word)
-                # print(dirWords)
+    res = np.where(np.array(grid) == word[0]) # get all the locations in grid where char == word's first char
+    locations = list(zip(res[0], res[1]))
+    for rowIdx, colIdx in locations:
+        generateDirections(grid, rowIdx, colIdx, word)
+
 
 
 grid=[
