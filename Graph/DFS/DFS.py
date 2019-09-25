@@ -2,14 +2,14 @@
 
 from collections import defaultdict
 
+from collections import OrderedDict
 class Graph:
 
     # Constructor
     def __init__(self):
 
         # default dictionary to store graph
-        # self.graph = defaultdict(list)
-        self.graph = defaultdict(set)
+
         self.visited = set()
         # function to add an edge to graph
 
@@ -33,7 +33,7 @@ class Graph:
             vertex = stack.pop()
             if vertex not in self.visited:
                 self.visited.add(vertex)
-                print(vertex, end=' ')
+                # print(vertex, end=' ')
                 stack.extend(self.graph[vertex] - self.visited) # add unvisited neighbors (set subtraction)
         return self.visited
 
@@ -54,11 +54,28 @@ print('============================')
 
 
 g2 = Graph()
-g2.addEdge(0, 1)
-g2.addEdge(0, 2)
-g2.addEdge(1, 2)
-g2.addEdge(2, 0)
-g2.addEdge(2, 3)
-g2.addEdge(3, 3)
+g2.addEdge('A','B')
+g2.addEdge('A','C')
+g2.addEdge('B','A')
+g2.addEdge('B','D')
+g2.addEdge('B','E')
+g2.addEdge('C','A')
+g2.addEdge('C','F')
+g2.addEdge('D','B')
+g2.addEdge('E','B')
+g2.addEdge('E','F')
+g2.addEdge('F','C')
+g2.addEdge('F','E')
+
 print('Iterative: ', end=' ')
-g2.dfsIterative(2)
+print(g2.dfsIterative('A'))
+
+
+g3 = Graph()
+g3.addEdge(0, 1)
+g3.addEdge(0, 2)
+g3.addEdge(1, 2)
+g3.addEdge(2, 0)
+g3.addEdge(2, 3)
+g3.addEdge(3, 3)
+print(g3.dfsIterative(0))
