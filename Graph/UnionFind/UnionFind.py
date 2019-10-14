@@ -19,7 +19,7 @@ class Graph:
 
     # A utility function to find the subset of an element i
     def find_parent(self, parent, i):
-        if parent[i] <= -1:
+        if parent[i] <= -1: # is this the topmost parent ?
             return i
         else:
             parent[i] = self.find_parent(parent, parent[i]) # path compression
@@ -41,21 +41,25 @@ class Graph:
 
         # Allocate memory for creating V subsets and
         # Initialize all subsets as single element sets
-        parent = [-1] * len(self.graph)
+        parent = [-1] * len(self.graph) # makeSet() - O(V)
 
         # Iterate through all edges of graph, find subset of both
         # vertices of every edge, if both subsets are same, then
         # there is cycle in graph.
+        visited = set()
         for i in self.graph:
             for j in self.graph[i]:
-                x = self.find_parent(parent, i)
-                y = self.find_parent(parent, j)
-                if x == y:
-                    print(parent)
-                    return True
-                self.union(parent, x, y)
+                if (i,j) not in visited: # prevent cycle detection for the same edge
+                    visited.add( (j, i) ); visited.add( (i,j) ); # prevent cycle detection for the same edge
+                    x = self.find_parent(parent, i)
+                    y = self.find_parent(parent, j)
+
+                    if x == y: print(parent); return True;
+
+                    self.union(parent, x, y)
+
         print(parent)
-            # Create a graph given in the above diagram
+
 
 
 g = Graph()
@@ -66,7 +70,8 @@ g.addEdge(0, 1)
 g.addEdge(1, 2)
 g.addEdge(2, 3)
 g.addEdge(2, 4)
-g.addEdge(3,0)
+# g.addEdge(4,0)
+# g.addEdge(3,0)
 
 print(g)
 
