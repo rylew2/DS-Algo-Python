@@ -15,7 +15,7 @@ class Graph:
     # function to add an edge to graph - add both since it's undirected
     def addEdge(self, u, v):
         self.graph[u].add(v)
-        # self.graph[v].add(u)
+        self.graph[v].add(u)
 
     # A utility function to find the subset of an element i
     def find_parent(self, parent, i):
@@ -69,9 +69,11 @@ for i in range(5):
 g.addEdge(0, 1)
 g.addEdge(1, 2)
 g.addEdge(2, 3)
-g.addEdge(2, 4)
+
+# g.addEdge(2, 4)
 # g.addEdge(4,0)
-# g.addEdge(3,0)
+g.addEdge(3,4)
+# g.addEdge(3,1)
 
 print(g)
 

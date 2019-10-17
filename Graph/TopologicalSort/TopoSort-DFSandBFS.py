@@ -77,6 +77,9 @@ class Graph:
             for i in self.graph[v]:
                 if i not in visited:
                     tsutil(i, deq, visited)
+
+            # append to beginning after we've added all this
+            # nodes children
             deq.appendleft(v)
 
         deq, visited = deque(), set()
@@ -97,7 +100,8 @@ g.addEdge(4, 0);
 g.addEdge(4, 1);
 # g.addEdge(1,4)
 g.addEdge(2, 3);
-g.addEdge(3, 1);
+# g.addEdge(3, 1);
+g.addEdge(1,3)
 
 print("Following is a Topological Sort of the given graph")
 g.bfs_topological_sort()
