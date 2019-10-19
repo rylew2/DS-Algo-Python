@@ -54,6 +54,7 @@ class Graph:
                     x = self.find_parent(parent, i)
                     y = self.find_parent(parent, j)
 
+
                     if x == y: print(parent); return True;
 
                     self.union(parent, x, y)
