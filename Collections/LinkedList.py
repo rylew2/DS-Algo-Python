@@ -76,9 +76,6 @@ class LinkedList(object):
         self.size -= 1
 
 
-
-
-
 # 3,3,4,2,4,3
 
 # Test cases

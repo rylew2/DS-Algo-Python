@@ -54,6 +54,10 @@ class Stack(object):
         return self.ll.delete_first()
 
 
+
+
+
+
 # Test cases
 # Set up some Elements
 e1 = Element(1)
