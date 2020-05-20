@@ -19,14 +19,20 @@ class Graph:
         self.graph[u].add(v)
 
 
-    def dfsRecursive(self, root, visited=None):
-        if visited == None: visited = set()
+    def dfsRecursive(self, root, visited=set()):
         visited.add(root)
         for v in self.graph[root]:   # Recur for all the vertices adjacent to this vertex
             if v not in visited:
                 self.dfsRecursive(v, visited)
         return visited
 
+    def dfsRecursive2(self, root, visited=None):
+        if visited == None: visited = set()
+        visited.add(root)
+        for v in self.graph[root]:   # Recur for all the vertices adjacent to this vertex
+            if v not in visited:
+                self.dfsRecursive(v, visited)
+        return visited
 
     def dfsIterative(self, v):
         stack = [v]
@@ -56,6 +62,7 @@ g2.addEdge('F','E')
 
 print('Recursive: ', end=' ')
 print(g2.dfsRecursive('A'))
+print(g2.dfsRecursive2('A'))
 
 
 

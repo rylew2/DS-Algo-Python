@@ -93,23 +93,24 @@ def Morris(root):
             print(curr.val)
             curr = curr.right
         else:
-            # Find the previous (prev) of curr
-            # 1. if current node has left child then find its in-order predecessor and make root as right child of it and move left of root.
-            # 1 is root - so make (the inorder predecessor) 5's right child be the root
+            # find the direct predecessor  ( predecessor of 1 is 4)
+            # the inorder predecessor is the rightmost element in the left subtree of curr
+
+            # have previous find the predecessor by going all the way right
             prev = curr.left
             while (prev.right and prev.right != curr):
                 prev = prev.right
 
-            # Make curr as right child of its prev
+            # Make predecessor's right point to curr
             if not prev.right:
                 prev.right = curr
                 curr = curr.left
 
-            # fix the right child of prev
+            # cleanup the right child of prev and print val
             else:
                 prev.right = None
                 print(curr.val)
-                curr = curr.right
+                curr = curr.right # go back up to "predecessor"
 
 
 
